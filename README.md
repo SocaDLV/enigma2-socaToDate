@@ -1,4 +1,4 @@
-# SocaToDate 📺⚡
+# SocaToDate
 
 **SocaToDate** is a lightweight Shell script designed for **Enigma2** set-top boxes (OpenATV, OpenPLi, VTi, BlackHole, etc.). It automatically fetches an IPTV provider's M3U playlist, checks your existing Enigma2 IPTV userbouquet file, and updates outdated stream URLs seamlessly without messing up your channel names, positions, or EPG references.
 
@@ -12,6 +12,17 @@
 - **Unmatched Channels Bouquet:** Generates a secondary bouquet for newly added provider channels that are not yet in your primary bouquet.
 - **OpenWebif Integration:** Shows real-time pop-up notifications on your TV screen upon completion.
 - **Auto GUI Reload:** Automatically reloads Enigma2 interface to apply stream changes immediately.
+
+---
+
+## 🔍 How It Works
+
+1. **Camouflaged Download:** Downloads your M3U file safely using a desktop User-Agent string to bypass provider rate limits or basic bot blocks.
+2. **Smart Parsing:** Filters out VOD, Series, and Movies, extracting only Live TV streams and mapping them to a temporary array.
+3. **Bouquet Scanning:** Reads your active `/etc/enigma2/userbouquet.iptv*.tv` file line-by-line.
+4. **Strict Matching:** Matches existing channel names in your decoder against the freshly downloaded URLs.
+5. **Precision Update:** Replaces *only* the stream links that have changed, leaving custom channel ordering and un-matched channels completely intact.
+6. **Apply & Reload:** Saves the new bouquet file and forces a GUI reload via OpenWebif to apply the changes instantly.
 
 ---
 
@@ -51,7 +62,7 @@ SHOW_OSD=1
 RESTART_GUI=1
 ```
 
-## 🚀 Usage
+## 🚀 First/Test Execution
 
 ### Manual Execution via Command Line
 Run the script from the terminal to test it:
@@ -59,7 +70,7 @@ Run the script from the terminal to test it:
 /usr/script/socaToDate.sh
 ```
 
-## 🔘 Mapping to Remote Control (Long Press Blue Button)
+## 🔘 Quick & Authomated Execution
 
 To run **SocaToDate** directly from your TV remote (e.g., holding down the **Blue Button**):
 
@@ -76,14 +87,7 @@ To run the script automatically every night at 4:00 AM without user intervention
    crontab -e
    0 4 * * * /usr/script/socaToDate.sh >/dev/null 2>&1
    ```
-## 🔍 How It Works
 
-1. **Camouflaged Download:** Downloads your M3U file safely using a desktop User-Agent string to bypass provider rate limits or basic bot blocks.
-2. **Smart Parsing:** Filters out VOD, Series, and Movies, extracting only Live TV streams and mapping them to a temporary array.
-3. **Bouquet Scanning:** Reads your active `/etc/enigma2/userbouquet.iptv*.tv` file line-by-line.
-4. **Strict Matching:** Matches existing channel names in your decoder against the freshly downloaded URLs.
-5. **Precision Update:** Replaces *only* the stream links that have changed, leaving custom channel ordering and un-matched channels completely intact.
-6. **Apply & Reload:** Saves the new bouquet file and forces a GUI reload via OpenWebif to apply the changes instantly.
 
 ## 📜 License
 
