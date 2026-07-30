@@ -31,10 +31,10 @@
 3. Set executable permissions on the script:
    ```bash
    chmod +x /usr/script/socaToDate.sh
-
-   ## ⚙️ Configuration
    ```
 
+## ⚙️ Configuration
+   
 Open `/usr/script/socaToDate.sh` with a text editor and configure the variables at the top:
 
 ```bash
